@@ -16,6 +16,10 @@
 - Responsive
 - Bootstrap is used
 
+#HTML:
+- <form> is used for styling purposes only
+- templates are located in <head> under <script type="text/html">
+
 
 #External APIs:
 - https://restcountries.eu/rest/v2
