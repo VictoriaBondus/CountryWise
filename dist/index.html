@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CountryWise</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="css/main.css" type="text/css"/>
+        <link rel="stylesheet" href="css/mediaQuery.css" type="text/css">
+
+        <script type="text/html" id="tableRowTempl">
+            <tr class="js-clickableRow d-flex" data-code="{isoD}">
+                <th class="col-1">{numD}</th>
+                <td class="col-3">{nameD}</td>
+                <td class="col-2">{isoD}</td>
+                <td class="col-3">{langD}</td>
+                <td class="col-3">{regionD}</td>
+            </tr>
+        </script>
+        <script type="text/html" id="countryInfoBlockTempl">
+            <tr class="js-infoBlockOuter d-flex flex-column">
+                <td colspan="5" class="info-block__wrapper">
+                    <div class="fjs-infoBlockInner">
+                        <h5 class="info-block__title">{nameB}</h5>
+                        <div class="row">
+                            <div class="info-block__label">top level domain:</div>
+                            <div class="info-block__item">{domainB}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">alpha-2 code:</div>
+                            <div class="info-block__item">{alpha2B}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">alpha-3 code:</div>
+                            <div class="info-block__item">{alpha3B}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">alternative spelling:</div>
+                            <div class="info-block__item">{altSpelB}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">region:</div>
+                            <div class="info-block__item">{regionB}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">timezone:</div>
+                            <div class="info-block__item">{timezB}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">language:</div>
+                            <div class="info-block__item">{langB}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">numeric code:</div>
+                            <div class="info-block__item">{numCodeB}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">currency:</div>
+                            <div class="info-block__item">{currB}</div>
+                        </div>
+                        <div class="row">
+                            <div class="info-block__label">euro rate:</div>
+                            <div class="info-block__item">{curToEurB}</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </script>
+        <script type="text/html" id="errorTempl">
+        <div class="alert text-center error-alert__wrapper">{errorMessage}</div>
+        </script>
+    </head>
+
+    <body>
+    <div class="backdrop js-backdrop"></div>
+    <div class="background"></div>
+
+        <!--MAIN-->
+        <main>
+            <div class="main__wrapper ">
+
+                <h1 class="text-center">Find out more!</h1>
+
+                <div class="container" id="searcher">
+                    <form action="" onsubmit="return false">
+                        <div class="form-group search__wrapper row">
+                                <div class="search__input">
+                                    <select  class="custom-select form-control search__input--options fjs-regionInput" id="regionInput">
+                                        <option selected>Choose the region</option>
+                                        <option value="Africa">Africa</option>
+                                        <option value="Americas">Americas</option>
+                                        <option value="Asia">Asia</option>
+                                        <option value="Europe">Europe</option>
+                                        <option value="Oceania">Oceania</option>
+                                        <option value="Polar">Polar</option>
+                                    </select>
+                                    <input type="text" class="form-control search__input--text js-searchInput mr-sm-2">
+                                </div>
+                                <div class="search__button__wrapper">
+                                    <button class="btn js-searchBt search__button" value="Search">Search</button>
+                                </div>
+                        </div>
+
+                        <div class="form-group row search__radio js-searchRadio" id="js-radio">
+
+                            <div class="form-check col-12 col-sm-6 col-xl-3 ab">
+                                <input class="form-check-input input__radio-button" type="radio" name="radioSearch" id="name" value="name" checked>
+                                <label class="radio-inline control-label form-check-label lb" for="name">
+                                    Country name
+                                </label>
+                            </div>
+
+                            <div class="form-check col-12 col-sm-6 col-xl-3">
+                                <input class="form-check-input input__radio-button" type="radio" name="radioSearch" id="iso" value="alpha">
+                                <label class="form-check-label" for="iso">
+                                    ISO 3166-1 2-letter code
+                                </label>
+                            </div>
+
+                            <div class="form-check col-12 col-sm-6 col-xl-3">
+                                <input class="form-check-input input__radio-button" type="radio" name="radioSearch" id="lang" value="lang">
+                                <label class="form-check-label" for="lang">
+                                    Language ISO code
+                                </label>
+                            </div>
+
+                            <div class="form-check col-12 col-sm-6 col-xl-3">
+                                <input class="form-check-input input__radio-button" type="radio" name="radioSearch" id="region" value="region">
+                                <label class="form-check-label" for="region">
+                                    Region
+                                </label>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="js-errorWrapper"></div>
+
+                <div class="container-fluid fjs-responseTableWrapper country-table__wrapper" id="responseTable">
+                    <table class="table table-hover country-table">
+                        <thead class="country-table__head">
+                        <tr class="d-flex">
+                            <th class="col-1">#</th>
+                            <th class="col-3">Country</th>
+                            <th class="col-2">ISO-code</th>
+                            <th class="col-3">Language</th>
+                            <th class="col-3">Region</th>
+                        </tr>
+                        </thead>
+                        <tbody id="js-responseTableBody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="lds-dual-ring"></div>
+            </div>
+
+        </main>
+
+        <script src="main.js"></script>
+    </body>
+</html>

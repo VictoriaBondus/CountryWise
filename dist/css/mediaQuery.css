@@ -1,0 +1,74 @@
+@media (max-width: 576px) {
+    *{
+        font-size: 0.75rem;
+    }
+
+    .main__wrapper {
+        padding: 2rem 0.5rem;
+    }
+
+    .search__wrapper{
+        width: 100%;
+    }
+
+    .search__input {
+        width: 70%;
+    }
+
+    .search__button__wrapper {
+        width: 30%;
+        margin: auto;
+    }
+
+    .search__radio .form-check{
+        margin-top: 1rem;
+    }
+
+    .country-table__wrapper {
+        padding: 0;
+        margin-top: 1rem;
+        max-width: 100%;
+    }
+
+    .country-table th, .country-table td {
+        padding: 0.75rem 0.35rem;
+    }
+
+
+    .js-infoBlockOuter td{
+        padding: 0.75rem 0;
+    }
+
+
+    .error-alert__wrapper {
+        margin-top: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+
+
+@media (max-width:768px) {
+    .info-block__label {
+        padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    }
+
+    .info-block__item{
+        padding:0.5rem 1rem 0.5rem 0.5rem;
+    }
+
+}
+
+
+@media (max-width: 1200px) {
+    .search__radio{
+        text-align: left;
+        margin-top: 0.5rem;
+        max-width: 40rem;
+    }
+
+}
+
+
+
+
