@@ -17,7 +17,7 @@
 - Bootstrap is used
 
 #HTML:
-- <form> is used for styling purposes only
+- form is used for styling purposes only
 - templates are located in <head> under <script type="text/html">
 
 
